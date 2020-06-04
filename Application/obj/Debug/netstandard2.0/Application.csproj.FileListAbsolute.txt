@@ -1,0 +1,14 @@
+/Users/tristanoshier/Documents/personal projects/Reactivities/Application/bin/Debug/netstandard2.0/Application.deps.json
+/Users/tristanoshier/Documents/personal projects/Reactivities/Application/bin/Debug/netstandard2.0/Application.dll
+/Users/tristanoshier/Documents/personal projects/Reactivities/Application/bin/Debug/netstandard2.0/Application.pdb
+/Users/tristanoshier/Documents/personal projects/Reactivities/Application/bin/Debug/netstandard2.0/Domain.dll
+/Users/tristanoshier/Documents/personal projects/Reactivities/Application/bin/Debug/netstandard2.0/Persistence.dll
+/Users/tristanoshier/Documents/personal projects/Reactivities/Application/bin/Debug/netstandard2.0/Domain.pdb
+/Users/tristanoshier/Documents/personal projects/Reactivities/Application/bin/Debug/netstandard2.0/Persistence.pdb
+/Users/tristanoshier/Documents/personal projects/Reactivities/Application/obj/Debug/netstandard2.0/Application.csprojAssemblyReference.cache
+/Users/tristanoshier/Documents/personal projects/Reactivities/Application/obj/Debug/netstandard2.0/Application.AssemblyInfoInputs.cache
+/Users/tristanoshier/Documents/personal projects/Reactivities/Application/obj/Debug/netstandard2.0/Application.AssemblyInfo.cs
+/Users/tristanoshier/Documents/personal projects/Reactivities/Application/obj/Debug/netstandard2.0/Application.csproj.CoreCompileInputs.cache
+/Users/tristanoshier/Documents/personal projects/Reactivities/Application/obj/Debug/netstandard2.0/Application.csproj.CopyComplete
+/Users/tristanoshier/Documents/personal projects/Reactivities/Application/obj/Debug/netstandard2.0/Application.dll
+/Users/tristanoshier/Documents/personal projects/Reactivities/Application/obj/Debug/netstandard2.0/Application.pdb
