@@ -31,23 +31,19 @@ const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({ match, hist
         }
     }, [loadActivity, match.params.id]);
 
-    // const handleSubmit = () => {
-    //     if (activity.id.length === 0) {
-    //         let newActivity = {
-    //             ...activity,
-    //             id: uuid()
-    //         }
-    //         createActivity(newActivity).then(() => history.push(`/activities/${newActivity.id}`));
-    //     } else {
-    //         editActivity(activity).then(() => history.push(`/activities/${activity.id}`));
-    //     }
-    // }
-
     const handleFinalFormSubmit = (values: any) => {
         const dateAndTime = combineDateAndTime(values.date, values.time);
-        const {date, time, ...activity} = values
+        const { date, time, ...activity } = values
         activity.date = dateAndTime;
-        console.log(activity);
+        if (!activity.id) {
+            let newActivity = {
+                ...activity,
+                id: uuid()
+            }
+            createActivity(newActivity);
+        } else {
+            editActivity(activity);
+        }
     }
 
     return (
@@ -55,75 +51,79 @@ const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({ match, hist
             <Grid.Column width={10}>
                 <Segment clearing>
                     <FinalForm
-                    initialValues={activity}
+                        initialValues={activity}
                         onSubmit={handleFinalFormSubmit}
-                        render={({handleSubmit}) => (
+                        render={({ handleSubmit }) => (
                             <Form onSubmit={handleSubmit} loading={loading}>
-                            <Field
-                                name='title' 
-                                placeholder="Title"
-                                value={activity.title}
-                                component={TextInput}
-                            />
-                            <Field
-                                name='description'
-                                placeholder="Description"
-                                rows={3}
-                                value={activity.description}
-                                component={TextAreaInput}
-                            />
-                            <Field
-                                name='category'
-                                placeholder="Category"
-                                value={activity.category}
-                                component={SelectInput}
-                                options={category}
-                            />
-                            <Form.Group widths='equal'>
                                 <Field
-                                    name='date'
-                                    placeholder="Date"
-                                    value={activity.date}
-                                    component={DateInput}
-                                    date={true}
+                                    name='title'
+                                    placeholder="Title"
+                                    value={activity.title}
+                                    component={TextInput}
                                 />
                                 <Field
-                                    name='time'
-                                    placeholder="Time"
-                                    value={activity.date}
-                                    component={DateInput}
-                                    time={true}
+                                    name='description'
+                                    placeholder="Description"
+                                    rows={3}
+                                    value={activity.description}
+                                    component={TextAreaInput}
                                 />
-                            </Form.Group>
-                            <Field
-                                name='city'
-                                placeholder="City"
-                                value={activity.city}
-                                component={TextInput}
-                            />
-                            <Field
-                                name='venue'
-                                placeholder="Venue"
-                                value={activity.venue}
-                                component={TextInput}
-                            />
-                            <Button
-                                loading={submitting}
-                                disabled={loading}
-                                floated='right'
-                                positive type='submit'
-                                content='Submit'
-                            />
-                            <Button
-                                onClick={() => history.push('/activities')}
-                                disabled={loading}
-                                floated='right'
-                                type='submit'
-                                content='Cancel'
-                            />
-                        </Form>
+                                <Field
+                                    name='category'
+                                    placeholder="Category"
+                                    value={activity.category}
+                                    component={SelectInput}
+                                    options={category}
+                                />
+                                <Form.Group widths='equal'>
+                                    <Field
+                                        name='date'
+                                        placeholder="Date"
+                                        value={activity.date}
+                                        component={DateInput}
+                                        date={true}
+                                    />
+                                    <Field
+                                        name='time'
+                                        placeholder="Time"
+                                        value={activity.date}
+                                        component={DateInput}
+                                        time={true}
+                                    />
+                                </Form.Group>
+                                <Field
+                                    name='city'
+                                    placeholder="City"
+                                    value={activity.city}
+                                    component={TextInput}
+                                />
+                                <Field
+                                    name='venue'
+                                    placeholder="Venue"
+                                    value={activity.venue}
+                                    component={TextInput}
+                                />
+                                <Button
+                                    loading={submitting}
+                                    disabled={loading}
+                                    floated='right'
+                                    positive type='submit'
+                                    content='Submit'
+                                />
+                                <Button
+                                    onClick={
+                                        activity.id 
+                                            ? () => history.push(`/activities/${activity.id}`) 
+                                            : () => history.push('/activities')
+                                    }
+                                    disabled={loading}
+                                    floated='right'
+                                    type='submit'
+                                    content='Cancel'
+                                />
+                            </Form>
                         )}
-                    /> 
+                    />
                 </Segment>
             </Grid.Column>
         </Grid>
