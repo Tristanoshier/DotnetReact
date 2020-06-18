@@ -3,6 +3,7 @@ import { createContext, SyntheticEvent } from 'react';
 import { IActivity } from '../models/activity';
 import agent from '../api/agent';
 import { history } from '../..';
+import { toast } from 'react-toastify';
 
 configure({ enforceActions: 'always' })
 
@@ -67,7 +68,7 @@ class ActivityStore {
                 runInAction('get activity error', () => {
                     this.loadingInitial = false;
                 })
-                console.log(error);
+                console.log(error.response);
             }
         }
     }
@@ -93,6 +94,7 @@ class ActivityStore {
             runInAction('create activity error', () => {
                 this.submitting = false;
             })
+            toast.error('Problem submitting data');
             console.log(error);
         }
     }
@@ -111,6 +113,7 @@ class ActivityStore {
             runInAction('edit activity error', () => {
                 this.submitting = false;
             })
+            toast.error('Problem submitting data');
             console.log(error)
         }
     }
